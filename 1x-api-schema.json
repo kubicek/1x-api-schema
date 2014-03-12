@@ -1,0 +1,220 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "definitions": {
+    "order": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "FIXME - Order",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "created_at": {
+          "description": "when order was created",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "description": "unique identifier of order",
+          "example": "01234567-89ab-cdef-0123-456789abcdef",
+          "format": "uuid",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/order/definitions/id"
+        },
+        "updated_at": {
+          "description": "when order was updated",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new order.",
+          "href": "/orders",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing order.",
+          "href": "/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing order.",
+          "href": "/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing orders.",
+          "href": "/orders",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing order.",
+          "href": "/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/order/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/order/definitions/id"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/order/definitions/updated_at"
+        }
+      },
+      "id": "schema/order"
+    },
+    "request": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "FIXME - Request",
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "created_at": {
+          "description": "when request was created",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "description": "unique identifier of request",
+          "example": "01234567-89ab-cdef-0123-456789abcdef",
+          "format": "uuid",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/request/definitions/id"
+        },
+        "updated_at": {
+          "description": "when request was updated",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new request.",
+          "href": "/requests",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing request.",
+          "href": "/requests/{(%23%2Fdefinitions%2Frequest%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing request.",
+          "href": "/requests/{(%23%2Fdefinitions%2Frequest%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing requests.",
+          "href": "/requests",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing request.",
+          "href": "/requests/{(%23%2Fdefinitions%2Frequest%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/request/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/request/definitions/id"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/request/definitions/updated_at"
+        }
+      },
+      "id": "schema/request"
+    }
+  },
+  "properties": {
+    "order": {
+      "$ref": "#/definitions/order"
+    },
+    "request": {
+      "$ref": "#/definitions/request"
+    }
+  },
+  "type": [
+    "object"
+  ]
+}
