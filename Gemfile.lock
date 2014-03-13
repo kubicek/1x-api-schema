@@ -1,0 +1,17 @@
+GIT
+  remote: https://github.com/heroku/prmd.git
+  revision: c1af326b3834e7815f48596e4ca519555ad56a41
+  specs:
+    prmd (0.0.1)
+      erubis
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    erubis (2.7.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  prmd!
