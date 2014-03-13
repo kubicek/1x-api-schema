@@ -37,14 +37,10 @@ Usage: 1x-api <command> [<parameter> [...]] [<body>]
 
 Help topics, type "1x-api help <topic>" for more details:
 
-  order:create      Create a new order.
-  order:delete      Delete an existing order.
-  order:info        Info for existing order.
-  order:list        List existing orders.
-  order:update      Update an existing order.
-  request:create    Create a new request.
-  request:delete    Delete an existing request.
-  request:info      Info for existing request.
-  request:list      List existing requests.
-  request:update    Update an existing request.
+  order:create      Podání nové objednávky.
+  order:info        Informace o konkrétní objednávce.
+  order:list        Seznam objednávek.
+  request:create    Podání nového požadavku.
+  request:info      Seznam požadavků.
+  request:list      Výpis požadavků.
 ```

@@ -1,5 +1,5 @@
 ## Order
-
+Order reprezentuje objednávku zákazníka. Obsahuje více požadavků (Request)
 
 ### Attributes
 <table>
@@ -10,10 +10,56 @@
     <th>Example</th>
   </tr>
   <tr>
-    <td><strong>created_at</strong></td>
-    <td><em>date-time</em></td>
-    <td>when order was created</td>
-    <td><code>"2012-01-01T12:00:00Z"</code></td>
+    <td><strong>id</strong></td>
+    <td><em>uuid</em></td>
+    <td>unique identifier of order</td>
+    <td><code>"01234567-89ab-cdef-0123-456789abcdef"</code></td>
+  </tr>
+  <tr>
+    <td><strong>requests</strong></td>
+    <td><em>array</em></td>
+    <td>Pole požadavků (Request)</td>
+    <td><code>{"object_type":"contact","handle":"KUBICEK","request_type":"register"}</code></td>
+  </tr>
+  <tr>
+    <td><strong>external_id</strong></td>
+    <td><em>string</em></td>
+    <td>identifikátor objednávky v systému zákazníka</td>
+    <td><code>"our_customer_invoice_35"</code></td>
+  </tr>
+</table>
+
+### Order Create
+Podání nové objednávky.
+
+```
+POST /orders
+```
+
+#### Required Parameters
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td><strong>requests</strong></td>
+    <td><em>array</em></td>
+    <td>Pole požadavků (Request)</td>
+    <td><code>{"object_type":"contact","handle":"KUBICEK","request_type":"register"}</code></td>
+  </tr>
+</table>
+
+
+#### Optional Parameters
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Example</th>
   </tr>
   <tr>
     <td><strong>id</strong></td>
@@ -22,26 +68,19 @@
     <td><code>"01234567-89ab-cdef-0123-456789abcdef"</code></td>
   </tr>
   <tr>
-    <td><strong>updated_at</strong></td>
-    <td><em>date-time</em></td>
-    <td>when order was updated</td>
-    <td><code>"2012-01-01T12:00:00Z"</code></td>
+    <td><strong>external_id</strong></td>
+    <td><em>string</em></td>
+    <td>identifikátor objednávky v systému zákazníka</td>
+    <td><code>"our_customer_invoice_35"</code></td>
   </tr>
 </table>
-
-### Order Create
-Create a new order.
-
-```
-POST /orders
-```
 
 
 #### Curl Example
 ```term
 $ curl -n -X POST /orders \
 -H "Content-Type: application/json" \
--d '{}'
+-d '{"id":null,"requests":null,"external_id":null}'
 ```
 
 #### Response Example
@@ -52,41 +91,18 @@ RateLimit-Remaining: 1200
 ```
 ```javascript```
 {
-  "created_at": "2012-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updated_at": "2012-01-01T12:00:00Z"
-}
-```
-
-### Order Delete
-Delete an existing order.
-
-```
-DELETE /orders/{order_id}
-```
-
-
-#### Curl Example
-```term
-$ curl -n -X DELETE /orders/$order_id
-```
-
-#### Response Example
-```
-HTTP/1.1 200 OK
-ETag: "0123456789abcdef0123456789abcdef"
-RateLimit-Remaining: 1200
-```
-```javascript```
-{
-  "created_at": "2012-01-01T12:00:00Z",
-  "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updated_at": "2012-01-01T12:00:00Z"
+  "requests": {
+    "object_type": "contact",
+    "handle": "KUBICEK",
+    "request_type": "register"
+  },
+  "external_id": "our_customer_invoice_35"
 }
 ```
 
 ### Order Info
-Info for existing order.
+Informace o konkrétní objednávce.
 
 ```
 GET /orders/{order_id}
@@ -106,14 +122,18 @@ RateLimit-Remaining: 1200
 ```
 ```javascript```
 {
-  "created_at": "2012-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updated_at": "2012-01-01T12:00:00Z"
+  "requests": {
+    "object_type": "contact",
+    "handle": "KUBICEK",
+    "request_type": "register"
+  },
+  "external_id": "our_customer_invoice_35"
 }
 ```
 
 ### Order List
-List existing orders.
+Seznam objednávek.
 
 ```
 GET /orders
@@ -136,45 +156,20 @@ RateLimit-Remaining: 1200
 ```javascript```
 [
   {
-    "created_at": "2012-01-01T12:00:00Z",
     "id": "01234567-89ab-cdef-0123-456789abcdef",
-    "updated_at": "2012-01-01T12:00:00Z"
+    "requests": {
+      "object_type": "contact",
+      "handle": "KUBICEK",
+      "request_type": "register"
+    },
+    "external_id": "our_customer_invoice_35"
   }
 ]
 ```
 
-### Order Update
-Update an existing order.
-
-```
-PATCH /orders/{order_id}
-```
-
-
-#### Curl Example
-```term
-$ curl -n -X PATCH /orders/$order_id \
--H "Content-Type: application/json" \
--d '{}'
-```
-
-#### Response Example
-```
-HTTP/1.1 200 OK
-ETag: "0123456789abcdef0123456789abcdef"
-RateLimit-Remaining: 1200
-```
-```javascript```
-{
-  "created_at": "2012-01-01T12:00:00Z",
-  "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updated_at": "2012-01-01T12:00:00Z"
-}
-```
-
 
 ## Request
-
+Request reprezentuje jeden konkrétní požadavek zákazníka.
 
 ### Attributes
 <table>
@@ -185,27 +180,39 @@ RateLimit-Remaining: 1200
     <th>Example</th>
   </tr>
   <tr>
-    <td><strong>created_at</strong></td>
-    <td><em>date-time</em></td>
-    <td>when request was created</td>
-    <td><code>"2012-01-01T12:00:00Z"</code></td>
-  </tr>
-  <tr>
     <td><strong>id</strong></td>
     <td><em>uuid</em></td>
     <td>unique identifier of request</td>
     <td><code>"01234567-89ab-cdef-0123-456789abcdef"</code></td>
   </tr>
   <tr>
-    <td><strong>updated_at</strong></td>
-    <td><em>date-time</em></td>
-    <td>when request was updated</td>
-    <td><code>"2012-01-01T12:00:00Z"</code></td>
+    <td><strong>object_type</strong></td>
+    <td><em>string</em></td>
+    <td>Typ objektu</td>
+    <td><code>"domain"</code></td>
+  </tr>
+  <tr>
+    <td><strong>request_type</strong></td>
+    <td><em>string</em></td>
+    <td>Typ požadavku</td>
+    <td><code>"register"</code></td>
+  </tr>
+  <tr>
+    <td><strong>registry_object_name</strong></td>
+    <td><em>string</em></td>
+    <td>Identifikátor objektu v registru</td>
+    <td><code>"KUBICEK"</code></td>
+  </tr>
+  <tr>
+    <td><strong>external_id</strong></td>
+    <td><em>string</em></td>
+    <td>identifikátor objednávky v systému zákazníka</td>
+    <td><code>"our_customer_invoice_35"</code></td>
   </tr>
 </table>
 
 ### Request Create
-Create a new request.
+Podání nového požadavku.
 
 ```
 POST /requests
@@ -227,41 +234,16 @@ RateLimit-Remaining: 1200
 ```
 ```javascript```
 {
-  "created_at": "2012-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updated_at": "2012-01-01T12:00:00Z"
-}
-```
-
-### Request Delete
-Delete an existing request.
-
-```
-DELETE /requests/{request_id}
-```
-
-
-#### Curl Example
-```term
-$ curl -n -X DELETE /requests/$request_id
-```
-
-#### Response Example
-```
-HTTP/1.1 200 OK
-ETag: "0123456789abcdef0123456789abcdef"
-RateLimit-Remaining: 1200
-```
-```javascript```
-{
-  "created_at": "2012-01-01T12:00:00Z",
-  "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updated_at": "2012-01-01T12:00:00Z"
+  "object_type": "domain",
+  "request_type": "register",
+  "registry_object_name": "KUBICEK",
+  "external_id": "our_customer_invoice_35"
 }
 ```
 
 ### Request Info
-Info for existing request.
+Seznam požadavků.
 
 ```
 GET /requests/{request_id}
@@ -281,14 +263,16 @@ RateLimit-Remaining: 1200
 ```
 ```javascript```
 {
-  "created_at": "2012-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updated_at": "2012-01-01T12:00:00Z"
+  "object_type": "domain",
+  "request_type": "register",
+  "registry_object_name": "KUBICEK",
+  "external_id": "our_customer_invoice_35"
 }
 ```
 
 ### Request List
-List existing requests.
+Výpis požadavků.
 
 ```
 GET /requests
@@ -311,40 +295,13 @@ RateLimit-Remaining: 1200
 ```javascript```
 [
   {
-    "created_at": "2012-01-01T12:00:00Z",
     "id": "01234567-89ab-cdef-0123-456789abcdef",
-    "updated_at": "2012-01-01T12:00:00Z"
+    "object_type": "domain",
+    "request_type": "register",
+    "registry_object_name": "KUBICEK",
+    "external_id": "our_customer_invoice_35"
   }
 ]
-```
-
-### Request Update
-Update an existing request.
-
-```
-PATCH /requests/{request_id}
-```
-
-
-#### Curl Example
-```term
-$ curl -n -X PATCH /requests/$request_id \
--H "Content-Type: application/json" \
--d '{}'
-```
-
-#### Response Example
-```
-HTTP/1.1 200 OK
-ETag: "0123456789abcdef0123456789abcdef"
-RateLimit-Remaining: 1200
-```
-```javascript```
-{
-  "created_at": "2012-01-01T12:00:00Z",
-  "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "updated_at": "2012-01-01T12:00:00Z"
-}
 ```
 
 

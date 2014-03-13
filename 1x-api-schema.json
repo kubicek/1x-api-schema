@@ -3,20 +3,12 @@
   "definitions": {
     "order": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "title": "FIXME - Order",
+      "title": "1X API - Order",
+      "description": "Order reprezentuje objednávku zákazníka. Obsahuje více požadavků (Request)",
       "type": [
         "object"
       ],
       "definitions": {
-        "created_at": {
-          "description": "when order was created",
-          "example": "2012-01-01T12:00:00Z",
-          "format": "date-time",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
         "id": {
           "description": "unique identifier of order",
           "example": "01234567-89ab-cdef-0123-456789abcdef",
@@ -29,25 +21,50 @@
         "identity": {
           "$ref": "#/definitions/order/definitions/id"
         },
-        "updated_at": {
-          "description": "when order was updated",
-          "example": "2012-01-01T12:00:00Z",
-          "format": "date-time",
+        "external_id": {
+          "description": "identifikátor objednávky v systému zákazníka",
+          "example": "our_customer_invoice_35",
           "readOnly": true,
           "type": [
             "string"
           ]
+        },
+        "requests": {
+          "type": [
+            "array"
+          ],
+          "items": {
+            "$ref": "#/definitions/request"
+          },
+          "description": "Pole požadavků (Request)",
+          "example": {
+            "object_type": "contact",
+            "handle": "KUBICEK",
+            "request_type": "register"
+          }
         }
       },
       "links": [
         {
-          "description": "Create a new order.",
+          "description": "Podání nové objednávky.",
           "href": "/orders",
           "method": "POST",
           "rel": "create",
           "schema": {
             "properties": {
+              "id": {
+                "$ref": "#/definitions/order/definitions/id"
+              },
+              "requests": {
+                "$ref": "#/definitions/order/definitions/requests"
+              },
+              "external_id": {
+                "$ref": "#/definitions/order/definitions/external_id"
+              }
             },
+            "required": [
+              "requests"
+            ],
             "type": [
               "object"
             ]
@@ -55,70 +72,41 @@
           "title": "Create"
         },
         {
-          "description": "Delete an existing order.",
-          "href": "/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}",
-          "method": "DELETE",
-          "rel": "destroy",
-          "title": "Delete"
-        },
-        {
-          "description": "Info for existing order.",
+          "description": "Informace o konkrétní objednávce.",
           "href": "/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}",
           "method": "GET",
           "rel": "self",
           "title": "Info"
         },
         {
-          "description": "List existing orders.",
+          "description": "Seznam objednávek.",
           "href": "/orders",
           "method": "GET",
           "rel": "instances",
           "title": "List"
-        },
-        {
-          "description": "Update an existing order.",
-          "href": "/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}",
-          "method": "PATCH",
-          "rel": "update",
-          "schema": {
-            "properties": {
-            },
-            "type": [
-              "object"
-            ]
-          },
-          "title": "Update"
         }
       ],
       "properties": {
-        "created_at": {
-          "$ref": "#/definitions/order/definitions/created_at"
-        },
         "id": {
           "$ref": "#/definitions/order/definitions/id"
         },
-        "updated_at": {
-          "$ref": "#/definitions/order/definitions/updated_at"
+        "requests": {
+          "$ref": "#/definitions/order/definitions/requests"
+        },
+        "external_id": {
+          "$ref": "#/definitions/order/definitions/external_id"
         }
       },
       "id": "schema/order"
     },
     "request": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
-      "title": "FIXME - Request",
+      "title": "1X API - Request",
+      "description": "Request reprezentuje jeden konkrétní požadavek zákazníka.",
       "type": [
         "object"
       ],
       "definitions": {
-        "created_at": {
-          "description": "when request was created",
-          "example": "2012-01-01T12:00:00Z",
-          "format": "date-time",
-          "readOnly": true,
-          "type": [
-            "string"
-          ]
-        },
         "id": {
           "description": "unique identifier of request",
           "example": "01234567-89ab-cdef-0123-456789abcdef",
@@ -131,10 +119,33 @@
         "identity": {
           "$ref": "#/definitions/request/definitions/id"
         },
-        "updated_at": {
-          "description": "when request was updated",
-          "example": "2012-01-01T12:00:00Z",
-          "format": "date-time",
+        "external_id": {
+          "description": "identifikátor objednávky v systému zákazníka",
+          "example": "our_customer_invoice_35",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "object_type": {
+          "description": "Typ objektu",
+          "example": "domain",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "request_type": {
+          "description": "Typ požadavku",
+          "example": "register",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "registry_object_name": {
+          "description": "Identifikátor objektu v registru",
+          "example": "KUBICEK",
           "readOnly": true,
           "type": [
             "string"
@@ -143,7 +154,7 @@
       },
       "links": [
         {
-          "description": "Create a new request.",
+          "description": "Podání nového požadavku.",
           "href": "/requests",
           "method": "POST",
           "rel": "create",
@@ -157,50 +168,35 @@
           "title": "Create"
         },
         {
-          "description": "Delete an existing request.",
-          "href": "/requests/{(%23%2Fdefinitions%2Frequest%2Fdefinitions%2Fidentity)}",
-          "method": "DELETE",
-          "rel": "destroy",
-          "title": "Delete"
-        },
-        {
-          "description": "Info for existing request.",
+          "description": "Seznam požadavků.",
           "href": "/requests/{(%23%2Fdefinitions%2Frequest%2Fdefinitions%2Fidentity)}",
           "method": "GET",
           "rel": "self",
           "title": "Info"
         },
         {
-          "description": "List existing requests.",
+          "description": "Výpis požadavků.",
           "href": "/requests",
           "method": "GET",
           "rel": "instances",
           "title": "List"
-        },
-        {
-          "description": "Update an existing request.",
-          "href": "/requests/{(%23%2Fdefinitions%2Frequest%2Fdefinitions%2Fidentity)}",
-          "method": "PATCH",
-          "rel": "update",
-          "schema": {
-            "properties": {
-            },
-            "type": [
-              "object"
-            ]
-          },
-          "title": "Update"
         }
       ],
       "properties": {
-        "created_at": {
-          "$ref": "#/definitions/request/definitions/created_at"
-        },
         "id": {
           "$ref": "#/definitions/request/definitions/id"
         },
-        "updated_at": {
-          "$ref": "#/definitions/request/definitions/updated_at"
+        "object_type": {
+          "$ref": "#/definitions/request/definitions/object_type"
+        },
+        "request_type": {
+          "$ref": "#/definitions/request/definitions/request_type"
+        },
+        "registry_object_name": {
+          "$ref": "#/definitions/request/definitions/registry_object_name"
+        },
+        "external_id": {
+          "$ref": "#/definitions/request/definitions/external_id"
         }
       },
       "id": "schema/request"
