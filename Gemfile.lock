@@ -7,6 +7,16 @@ GIT
       rack (> 0.0)
 
 GIT
+  remote: https://github.com/heroku/heroics.git
+  revision: 0112986223b25275d053c0adc98ad53d0eca2299
+  specs:
+    heroics (0.0.3)
+      excon
+      moneta
+      multi_json
+      netrc
+
+GIT
   remote: https://github.com/heroku/prmd.git
   revision: c1af326b3834e7815f48596e4ca519555ad56a41
   specs:
@@ -17,7 +27,10 @@ GEM
   remote: https://rubygems.org/
   specs:
     erubis (2.7.0)
+    excon (0.32.0)
+    moneta (0.7.20)
     multi_json (1.9.0)
+    netrc (0.7.7)
     rack (1.5.2)
 
 PLATFORMS
@@ -25,4 +38,5 @@ PLATFORMS
 
 DEPENDENCIES
   committee!
+  heroics!
   prmd!
