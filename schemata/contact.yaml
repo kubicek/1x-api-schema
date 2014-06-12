@@ -1,0 +1,300 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: FIXME - Contact
+definitions:
+  tld:
+    description: doména nejvyššího řádu (TLD)
+    example: cz
+    type:
+    - string
+  id:
+    description: identifikátor kontaktu
+    example: 'KRAXNET'
+    type:
+    - string
+  organization:
+    description: firma
+    example: KRAXNET s.r.o.
+    type:
+    - string
+  first_name:
+    description: jméno
+    example: Jiří
+    type:
+    - string
+  last_name:
+    description: příjmení
+    example: Kubíček
+    type:
+    - string    
+  email:
+    description: e-mail
+    example: info@kraxnet.cz
+    type:
+    - string
+  phone:
+    description: telefon
+    example: +420.220199201
+    type:
+    - string
+  fax:
+    description: fax
+    example: +420.220199200
+    type:
+    - string
+  ident_type:
+    description: typ identifikátoru (OP,Pas,MPSV,IC,Datum narození)
+    example: IC
+    type:
+    - string
+  ident:
+    description: hodnota identifikátoru
+    example: 26460335
+    type:
+    - string
+  street:
+    description: ulice, číslo popisné
+    example: Kamenická 26
+    type:
+    - string
+  city:
+    description: město
+    example: Praha
+    type:
+    - string
+  zip:
+    description: poštovní směrovací číslo
+    example: 17000
+    type:
+    - string
+  country:
+    description: kód státu
+    example: CZ
+    type:
+    - string
+  state:
+    description: region
+    example: ''
+    type:
+    - string
+  vat:
+    description: DIČ
+    example: CZ26460335
+    type:
+    - string
+  authorization_key:
+    description: autorizační klíč kontaktu
+    example: SeCr3t:T0k3n
+    type:
+    - string
+  notify_email:
+    description: e-mail pro oznámení
+    example: 'notify@kraxnet.cz'
+    type:
+    - string
+  hide:
+    description: skryté údaje
+    example: ''
+    type:
+    - string    
+  created_at:
+    description: when contact was created
+    example: '2012-01-01T12:00:00Z'
+    format: date-time
+    type:
+    - string
+  identity:
+    "$ref": "/schemata/contact#/definitions/id"
+  updated_at:
+    description: when contact was updated
+    example: '2012-01-01T12:00:00Z'
+    format: date-time
+    type:
+    - string
+description: FIXME
+links:
+- description: Služba pro ověření dostupnosti kontaktu.
+  href: "/contacts/check"
+  method: POST
+  rel: check
+  targetSchema:
+    "$ref": "/schemata/request"
+  title: Check
+  schema:
+    properties:
+      id:
+        "$ref": "/schemata/contact#/definitions/id"
+    type:
+    - object
+- description: Služba pro vytvoření nového kontaktu.
+  href: "/contacts/register"
+  method: POST
+  rel: register
+  targetSchema:
+    "$ref": "/schemata/request"
+  schema:
+    properties: 
+      tld:
+        "$ref": "/schemata/contact#/definitions/tld"
+      id:
+        "$ref": "/schemata/contact#/definitions/id"
+      organization:
+        "$ref": "/schemata/contact#/definitions/organization"
+      first_name:
+        "$ref": "/schemata/contact#/definitions/first_name"
+      last_name:
+        "$ref": "/schemata/contact#/definitions/last_name"
+      email:
+        "$ref": "/schemata/contact#/definitions/email"
+      phone:
+        "$ref": "/schemata/contact#/definitions/phone"
+      fax:
+        "$ref": "/schemata/contact#/definitions/fax"
+      ident_type:
+        "$ref": "/schemata/contact#/definitions/ident_type"
+      ident:
+        "$ref": "/schemata/contact#/definitions/ident"
+      street:
+        "$ref": "/schemata/contact#/definitions/street"
+      city:
+        "$ref": "/schemata/contact#/definitions/city"
+      zip:
+        "$ref": "/schemata/contact#/definitions/zip"
+      country:
+        "$ref": "/schemata/contact#/definitions/country"
+      state:
+        "$ref": "/schemata/contact#/definitions/state"
+      vat:
+        "$ref": "/schemata/contact#/definitions/vat"
+      authorization_key:
+        "$ref": "/schemata/contact#/definitions/authorization_key"
+      notify_email:
+        "$ref": "/schemata/contact#/definitions/notify_email"
+      hide:
+        "$ref": "/schemata/contact#/definitions/hide"
+    type:
+    - object
+  title: Register
+- description: Služba pro změnu registrátora kontaktu na 1X.
+  href: "/contacts/transfer"
+  method: POST
+  rel: transfer
+  title: Transfer
+  targetSchema:
+    "$ref": "/schemata/request"
+  schema:
+    properties:
+      id:
+        "$ref": "/schemata/contact#/definitions/id"
+      authorization_key:
+        "$ref": "/schemata/contact#/definitions/authorization_key"
+    type:
+    - object
+- description: Služba pro změnu kontaktu.
+  href: "/contacts/update"
+  method: POST
+  rel: update
+  targetSchema:
+    "$ref": "/schemata/request"
+  schema:
+    properties: 
+      tld:
+        "$ref": "/schemata/contact#/definitions/tld"
+      id:
+        "$ref": "/schemata/contact#/definitions/id"
+      organization:
+        "$ref": "/schemata/contact#/definitions/organization"
+      first_name:
+        "$ref": "/schemata/contact#/definitions/first_name"
+      last_name:
+        "$ref": "/schemata/contact#/definitions/last_name"
+      email:
+        "$ref": "/schemata/contact#/definitions/email"
+      phone:
+        "$ref": "/schemata/contact#/definitions/phone"
+      fax:
+        "$ref": "/schemata/contact#/definitions/fax"
+      ident_type:
+        "$ref": "/schemata/contact#/definitions/ident_type"
+      ident:
+        "$ref": "/schemata/contact#/definitions/ident"
+      street:
+        "$ref": "/schemata/contact#/definitions/street"
+      city:
+        "$ref": "/schemata/contact#/definitions/city"
+      zip:
+        "$ref": "/schemata/contact#/definitions/zip"
+      country:
+        "$ref": "/schemata/contact#/definitions/country"
+      state:
+        "$ref": "/schemata/contact#/definitions/state"
+      vat:
+        "$ref": "/schemata/contact#/definitions/vat"
+      authorization_key:
+        "$ref": "/schemata/contact#/definitions/authorization_key"
+      notify_email:
+        "$ref": "/schemata/contact#/definitions/notify_email"
+      hide:
+        "$ref": "/schemata/contact#/definitions/hide"
+    type:
+    - object
+  title: Update
+- description: Služba pro zrušení kontaktu, který není navázán na žádný objekt (doména, nsset, keyset).
+  href: "/contacts/delete"
+  method: POST
+  rel: destroy
+  targetSchema:
+    "$ref": "/schemata/request"
+  title: Delete
+  schema:
+    properties:
+      id:
+        "$ref": "/schemata/contact#/definitions/id"
+    type:
+    - object  
+properties:
+  tld:
+    "$ref": "/schemata/contact#/definitions/tld"
+  id:
+    "$ref": "/schemata/contact#/definitions/id"
+  organization:
+    "$ref": "/schemata/contact#/definitions/organization"
+  first_name:
+    "$ref": "/schemata/contact#/definitions/first_name"
+  last_name:
+    "$ref": "/schemata/contact#/definitions/last_name"
+  email:
+    "$ref": "/schemata/contact#/definitions/email"
+  phone:
+    "$ref": "/schemata/contact#/definitions/phone"
+  fax:
+    "$ref": "/schemata/contact#/definitions/fax"
+  ident_type:
+    "$ref": "/schemata/contact#/definitions/ident_type"
+  ident:
+    "$ref": "/schemata/contact#/definitions/ident"
+  street:
+    "$ref": "/schemata/contact#/definitions/street"
+  city:
+    "$ref": "/schemata/contact#/definitions/city"
+  zip:
+    "$ref": "/schemata/contact#/definitions/zip"
+  country:
+    "$ref": "/schemata/contact#/definitions/country"
+  state:
+    "$ref": "/schemata/contact#/definitions/state"
+  vat:
+    "$ref": "/schemata/contact#/definitions/vat"
+  authorization_key:
+    "$ref": "/schemata/contact#/definitions/authorization_key"
+  notify_email:
+    "$ref": "/schemata/contact#/definitions/notify_email"
+  hide:
+    "$ref": "/schemata/contact#/definitions/hide"
+  created_at:
+    "$ref": "/schemata/contact#/definitions/created_at"
+  updated_at:
+    "$ref": "/schemata/contact#/definitions/updated_at"
+type:
+- object
+id: schemata/contact
