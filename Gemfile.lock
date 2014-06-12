@@ -1,35 +1,39 @@
 GIT
-  remote: https://github.com/heroku/committee.git
-  revision: eac7c0e4be5f9da175553d3a998e58d784065395
+  remote: https://github.com/interagent/committee.git
+  revision: 222e4b85aac6f0942d5f897861a2debb376304ae
   specs:
-    committee (0.4.2)
+    committee (1.2.0)
+      json_schema (~> 0.1)
       multi_json (> 0.0)
       rack (> 0.0)
 
 GIT
-  remote: https://github.com/heroku/heroics.git
-  revision: 0112986223b25275d053c0adc98ad53d0eca2299
+  remote: https://github.com/interagent/heroics.git
+  revision: 98d4de2349604f5d9b698f46d1267c715e474421
   specs:
-    heroics (0.0.3)
+    heroics (0.0.10)
+      erubis (~> 2.7.0)
       excon
       moneta
-      multi_json
+      multi_json (>= 1.9.2)
       netrc
 
 GIT
-  remote: https://github.com/heroku/prmd.git
-  revision: c1af326b3834e7815f48596e4ca519555ad56a41
+  remote: https://github.com/interagent/prmd.git
+  revision: f29cfea6b7d88f38bbbff8e0cc5996e36e918d39
   specs:
-    prmd (0.0.1)
-      erubis
+    prmd (0.3.2)
+      erubis (~> 2.7)
+      json_schema (~> 0.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
     erubis (2.7.0)
-    excon (0.32.0)
+    excon (0.37.0)
+    json_schema (0.1.4)
     moneta (0.7.20)
-    multi_json (1.9.0)
+    multi_json (1.10.1)
     netrc (0.7.7)
     rack (1.5.2)
 
