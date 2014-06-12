@@ -1,0 +1,9 @@
+{
+ "description": "1X API",
+ "id": "1x-api",
+ "links": [{
+   "href": "https://api.1x.sk",
+   "rel": "self"
+ }],
+ "title": "1X API"
+}
