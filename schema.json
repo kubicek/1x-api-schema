@@ -1,0 +1,550 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "definitions": {
+    "contact": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "FIXME - Contact",
+      "definitions": {
+        "tld": {
+          "description": "doména nejvyššího řádu (TLD)",
+          "example": "cz",
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "description": "identifikátor kontaktu",
+          "example": "KRAXNET",
+          "type": [
+            "string"
+          ]
+        },
+        "organization": {
+          "description": "firma",
+          "example": "KRAXNET s.r.o.",
+          "type": [
+            "string"
+          ]
+        },
+        "first_name": {
+          "description": "jméno",
+          "example": "Jiří",
+          "type": [
+            "string"
+          ]
+        },
+        "last_name": {
+          "description": "příjmení",
+          "example": "Kubíček",
+          "type": [
+            "string"
+          ]
+        },
+        "email": {
+          "description": "e-mail",
+          "example": "info@kraxnet.cz",
+          "type": [
+            "string"
+          ]
+        },
+        "phone": {
+          "description": "telefon",
+          "example": 420.220199201,
+          "type": [
+            "string"
+          ]
+        },
+        "fax": {
+          "description": "fax",
+          "example": 420.2201992,
+          "type": [
+            "string"
+          ]
+        },
+        "ident_type": {
+          "description": "typ identifikátoru (OP,Pas,MPSV,IC,Datum narození)",
+          "example": "IC",
+          "type": [
+            "string"
+          ]
+        },
+        "ident": {
+          "description": "hodnota identifikátoru",
+          "example": 26460335,
+          "type": [
+            "string"
+          ]
+        },
+        "street": {
+          "description": "ulice, číslo popisné",
+          "example": "Kamenická 26",
+          "type": [
+            "string"
+          ]
+        },
+        "city": {
+          "description": "město",
+          "example": "Praha",
+          "type": [
+            "string"
+          ]
+        },
+        "zip": {
+          "description": "poštovní směrovací číslo",
+          "example": 17000,
+          "type": [
+            "string"
+          ]
+        },
+        "country": {
+          "description": "kód státu",
+          "example": "CZ",
+          "type": [
+            "string"
+          ]
+        },
+        "state": {
+          "description": "region",
+          "example": "",
+          "type": [
+            "string"
+          ]
+        },
+        "vat": {
+          "description": "DIČ",
+          "example": "CZ26460335",
+          "type": [
+            "string"
+          ]
+        },
+        "authorization_key": {
+          "description": "autorizační klíč kontaktu",
+          "example": "SeCr3t:T0k3n",
+          "type": [
+            "string"
+          ]
+        },
+        "notify_email": {
+          "description": "e-mail pro oznámení",
+          "example": "notify@kraxnet.cz",
+          "type": [
+            "string"
+          ]
+        },
+        "hide": {
+          "description": "skryté údaje",
+          "example": "",
+          "type": [
+            "string"
+          ]
+        },
+        "created_at": {
+          "description": "when contact was created",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/contact/definitions/id"
+        },
+        "updated_at": {
+          "description": "when contact was updated",
+          "example": "2012-01-01T12:00:00Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "description": "FIXME",
+      "links": [
+        {
+          "description": "Služba pro ověření dostupnosti kontaktu.",
+          "href": "/contacts/check",
+          "method": "POST",
+          "rel": "check",
+          "targetSchema": {
+            "$ref": "#/definitions/request"
+          },
+          "title": "Check",
+          "schema": {
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/contact/definitions/id"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          }
+        },
+        {
+          "description": "Služba pro vytvoření nového kontaktu.",
+          "href": "/contacts/register",
+          "method": "POST",
+          "rel": "register",
+          "targetSchema": {
+            "$ref": "#/definitions/request"
+          },
+          "schema": {
+            "properties": {
+              "tld": {
+                "$ref": "#/definitions/contact/definitions/tld"
+              },
+              "id": {
+                "$ref": "#/definitions/contact/definitions/id"
+              },
+              "organization": {
+                "$ref": "#/definitions/contact/definitions/organization"
+              },
+              "first_name": {
+                "$ref": "#/definitions/contact/definitions/first_name"
+              },
+              "last_name": {
+                "$ref": "#/definitions/contact/definitions/last_name"
+              },
+              "email": {
+                "$ref": "#/definitions/contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/contact/definitions/phone"
+              },
+              "fax": {
+                "$ref": "#/definitions/contact/definitions/fax"
+              },
+              "ident_type": {
+                "$ref": "#/definitions/contact/definitions/ident_type"
+              },
+              "ident": {
+                "$ref": "#/definitions/contact/definitions/ident"
+              },
+              "street": {
+                "$ref": "#/definitions/contact/definitions/street"
+              },
+              "city": {
+                "$ref": "#/definitions/contact/definitions/city"
+              },
+              "zip": {
+                "$ref": "#/definitions/contact/definitions/zip"
+              },
+              "country": {
+                "$ref": "#/definitions/contact/definitions/country"
+              },
+              "state": {
+                "$ref": "#/definitions/contact/definitions/state"
+              },
+              "vat": {
+                "$ref": "#/definitions/contact/definitions/vat"
+              },
+              "authorization_key": {
+                "$ref": "#/definitions/contact/definitions/authorization_key"
+              },
+              "notify_email": {
+                "$ref": "#/definitions/contact/definitions/notify_email"
+              },
+              "hide": {
+                "$ref": "#/definitions/contact/definitions/hide"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Register"
+        },
+        {
+          "description": "Služba pro změnu registrátora kontaktu na 1X.",
+          "href": "/contacts/transfer",
+          "method": "POST",
+          "rel": "transfer",
+          "title": "Transfer",
+          "targetSchema": {
+            "$ref": "#/definitions/request"
+          },
+          "schema": {
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/contact/definitions/id"
+              },
+              "authorization_key": {
+                "$ref": "#/definitions/contact/definitions/authorization_key"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          }
+        },
+        {
+          "description": "Služba pro změnu kontaktu.",
+          "href": "/contacts/update",
+          "method": "POST",
+          "rel": "update",
+          "targetSchema": {
+            "$ref": "#/definitions/request"
+          },
+          "schema": {
+            "properties": {
+              "tld": {
+                "$ref": "#/definitions/contact/definitions/tld"
+              },
+              "id": {
+                "$ref": "#/definitions/contact/definitions/id"
+              },
+              "organization": {
+                "$ref": "#/definitions/contact/definitions/organization"
+              },
+              "first_name": {
+                "$ref": "#/definitions/contact/definitions/first_name"
+              },
+              "last_name": {
+                "$ref": "#/definitions/contact/definitions/last_name"
+              },
+              "email": {
+                "$ref": "#/definitions/contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/contact/definitions/phone"
+              },
+              "fax": {
+                "$ref": "#/definitions/contact/definitions/fax"
+              },
+              "ident_type": {
+                "$ref": "#/definitions/contact/definitions/ident_type"
+              },
+              "ident": {
+                "$ref": "#/definitions/contact/definitions/ident"
+              },
+              "street": {
+                "$ref": "#/definitions/contact/definitions/street"
+              },
+              "city": {
+                "$ref": "#/definitions/contact/definitions/city"
+              },
+              "zip": {
+                "$ref": "#/definitions/contact/definitions/zip"
+              },
+              "country": {
+                "$ref": "#/definitions/contact/definitions/country"
+              },
+              "state": {
+                "$ref": "#/definitions/contact/definitions/state"
+              },
+              "vat": {
+                "$ref": "#/definitions/contact/definitions/vat"
+              },
+              "authorization_key": {
+                "$ref": "#/definitions/contact/definitions/authorization_key"
+              },
+              "notify_email": {
+                "$ref": "#/definitions/contact/definitions/notify_email"
+              },
+              "hide": {
+                "$ref": "#/definitions/contact/definitions/hide"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        },
+        {
+          "description": "Služba pro zrušení kontaktu, který není navázán na žádný objekt (doména, nsset, keyset).",
+          "href": "/contacts/delete",
+          "method": "POST",
+          "rel": "destroy",
+          "targetSchema": {
+            "$ref": "#/definitions/request"
+          },
+          "title": "Delete",
+          "schema": {
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/contact/definitions/id"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "tld": {
+          "$ref": "#/definitions/contact/definitions/tld"
+        },
+        "id": {
+          "$ref": "#/definitions/contact/definitions/id"
+        },
+        "organization": {
+          "$ref": "#/definitions/contact/definitions/organization"
+        },
+        "first_name": {
+          "$ref": "#/definitions/contact/definitions/first_name"
+        },
+        "last_name": {
+          "$ref": "#/definitions/contact/definitions/last_name"
+        },
+        "email": {
+          "$ref": "#/definitions/contact/definitions/email"
+        },
+        "phone": {
+          "$ref": "#/definitions/contact/definitions/phone"
+        },
+        "fax": {
+          "$ref": "#/definitions/contact/definitions/fax"
+        },
+        "ident_type": {
+          "$ref": "#/definitions/contact/definitions/ident_type"
+        },
+        "ident": {
+          "$ref": "#/definitions/contact/definitions/ident"
+        },
+        "street": {
+          "$ref": "#/definitions/contact/definitions/street"
+        },
+        "city": {
+          "$ref": "#/definitions/contact/definitions/city"
+        },
+        "zip": {
+          "$ref": "#/definitions/contact/definitions/zip"
+        },
+        "country": {
+          "$ref": "#/definitions/contact/definitions/country"
+        },
+        "state": {
+          "$ref": "#/definitions/contact/definitions/state"
+        },
+        "vat": {
+          "$ref": "#/definitions/contact/definitions/vat"
+        },
+        "authorization_key": {
+          "$ref": "#/definitions/contact/definitions/authorization_key"
+        },
+        "notify_email": {
+          "$ref": "#/definitions/contact/definitions/notify_email"
+        },
+        "hide": {
+          "$ref": "#/definitions/contact/definitions/hide"
+        },
+        "created_at": {
+          "$ref": "#/definitions/contact/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/contact/definitions/updated_at"
+        }
+      },
+      "type": [
+        "object"
+      ]
+    },
+    "request": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "FIXME - Request",
+      "definitions": {
+        "id": {
+          "description": "unique identifier of request",
+          "example": "01234567-89ab-cdef-0123-456789abcdef",
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "$ref": "#/definitions/request/definitions/id"
+        },
+        "registry_object_name": {
+          "description": "Identifikátor objektu v registru",
+          "example": "kraxnet.cz",
+          "type": [
+            "string"
+          ]
+        },
+        "object_type": {
+          "description": "Typ objektu v registru",
+          "example": "domain",
+          "type": [
+            "string"
+          ]
+        },
+        "request_type": {
+          "description": "Typ požadavku na práci s objektem",
+          "example": "check",
+          "type": [
+            "string"
+          ]
+        },
+        "content": {
+          "description": "Obsah požadavku",
+          "example": "{}",
+          "type": [
+            "string"
+          ]
+        },
+        "status": {
+          "description": "Stav zpracování požadavku",
+          "example": "successful",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "description": "FIXME",
+      "links": [
+        {
+          "description": "Služba pro získání obsahu odeslaného požadavku.",
+          "href": "/requests/{(%23%2Fdefinitions%2Frequest%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/request/definitions/id"
+        },
+        "registry_object_name": {
+          "$ref": "#/definitions/request/definitions/registry_object_name"
+        },
+        "object_type": {
+          "$ref": "#/definitions/request/definitions/object_type"
+        },
+        "request_type": {
+          "$ref": "#/definitions/request/definitions/request_type"
+        },
+        "content": {
+          "$ref": "#/definitions/request/definitions/content"
+        },
+        "status": {
+          "$ref": "#/definitions/request/definitions/status"
+        }
+      },
+      "type": [
+        "object"
+      ]
+    }
+  },
+  "properties": {
+    "contact": {
+      "$ref": "#/definitions/contact"
+    },
+    "request": {
+      "$ref": "#/definitions/request"
+    }
+  },
+  "type": [
+    "object"
+  ],
+  "description": "Hello world prmd API",
+  "id": "hello-prmd",
+  "links": [
+    {
+      "href": "https://api.hello.com",
+      "rel": "self"
+    }
+  ],
+  "title": "Hello Prmd"
+}
