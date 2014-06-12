@@ -5,7 +5,7 @@ require 'heroics'
 url = "http://localhost:8000"
 options = { default_headers: {'Accept' => 'application/vnd.1x+json; version=1'} }
 
-schema = Heroics::Schema.new(MultiJson.decode(File.open("1x-api-schema.json").read))
+schema = Heroics::Schema.new(MultiJson.decode(File.open("schema.json").read))
 cli = Heroics::cli_from_schema('1x-api', STDOUT, schema, url, options)
 
 cli.run(*ARGV)

@@ -36,6 +36,7 @@ GEM
     multi_json (1.10.1)
     netrc (0.7.7)
     rack (1.5.2)
+    rake (10.3.1)
 
 PLATFORMS
   ruby
@@ -44,3 +45,4 @@ DEPENDENCIES
   committee!
   heroics!
   prmd!
+  rake
